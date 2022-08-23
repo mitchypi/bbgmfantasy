@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<form method="post" enctype="multipart/form-data"><form>
+        <label for="fga">fga</label>
+        <input type="numeric" id="fga" name="fga" value="0">
+        <label for="fg">fg</label>
+        <input type="numeric" id="fg" name="fg" value="0">
+        <label for="fta">fta</label>
+        <input type="numeric" id="fta" name="fta" value="0">
+        <label for="ft">ft</label>
+        <input type="numeric" id="ft" name="ft" value="0">
+        <label for="3p">3p</label>
+        <input type="numeric" id="3p" name="3p" value="0">
+        <label for="pts">pts</label>
+        <input type="numeric" id="pts" name="pts" value="0">
+        <label for="trb">trb</label>
+        <input type="numeric" id="trb" name="trb" value="0">
+        <label for="ast">ast</label>
+        <input type="numeric" id="ast" name="ast" value="0">
+        <label for="stl">stl</label>
+        <input type="numeric" id="stl" name="stl" value="0">
+        <label for="blk">blk</label>
+        <input type="numeric" id="blk" name="blk" value="0">
+        <label for="tov">tov</label>
+        <input type="numeric" id="tov" name="tov" value="0">
+        <label for="dd">dd</label>
+        <input type="numeric" id="dd" name="dd" value="0">
+        <label for="td">td</label>
+        <input type="numeric" id="td" name="td" value="0">
+    <div class="rTable">
+        <fieldset> <legend>Upload Stats File</legend>
+        <div class="rTableRow">
+            <div class="rTableCell"><label for="stats">Post Stats Here</label></div>
+            <div class="rTableCell"><input type="file" name="stats" /> </div></div>
+        </fieldset>
+        </div>
+    <div class="rTable">
+        <div class="rTableRow">
+            <div class="rTableCell"></div>
+            <br>
+            <div class="rTableCell"><input type="submit" value="Submit"></div></div>
+        </div>
+        <input type="checkbox" id="defaults" name="defaults" value="True">
+        <label for="defaults"> Use default values</label><br> 
+</form>
+
+{% if result %}
+<p>Average Fantasy Points Per Game: <b>{{avg}}</b></p>
+<table>
+    <thead>
+      <tr>
+        <th>Game</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for key, value in result.items() %}
+     <tr>
+         <td> {{ key }} </td>
+         <td> {{ value }} </td>
+     </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <img src="static/storage/plot.png" alt="plot">
+
+    
+{% endif %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,49 @@
+{% extends 'layout1.html' %}
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+    <label for="labelSelect1">Choose label set</label><br>
+    <select id="labelSelect" name = "labelSelect1">
+        {% for label in labels %}
+        <option value= "{{label['labelSet']}}" SELECTED>{{label['labelSet']}}</option>"
+        {% endfor %}
+      </select>
+    <div class="rTable">
+        <fieldset> <legend>Input elements:</legend>
+
+        <div class="rTableRow">
+            <div class="rTableCell"><label for="qimage">Query image:</label></div>
+            <div class="rTableCell"><input type="file" name="query_image" /> </div></div>
+
+        </fieldset>
+        </div>
+    <div class="rTable">
+        <div class="rTableRow">
+            <div class="rTableCell"></div>
+            <br>
+            <div class="rTableCell"><input type="submit" value="Submit"></div></div>
+        </div>
+</form>
+
+{% if results  %}
+
+    <b>{{name}}</b>
+    <table border="1">
+        <tr><th>Label </th><th>Score</th></tr>
+
+        {% for label in labels %}
+        
+        <tr>
+            <td>{{label[0]}}</td>
+            <td>{{label[1]}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endif %}
+
+{% endblock %}
+
+
+
